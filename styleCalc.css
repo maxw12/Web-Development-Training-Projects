@@ -44,9 +44,6 @@ button {
     margin: 3.2px;
 }
 
-#clear {
-}
-
 button:hover {
     background-color: rgb(126, 124, 120);
 }
