@@ -1,0 +1,17 @@
+assign a variable to the inputbox
+
+loop through every element by id that is a number
+for each number clicked, add the number on to the end of the string.
+But if the inputbox is already 0, leave it as 0.
+
+loop through every item that is an operation, then add the operation onto 
+the end of the string.
+But if the inputbox is 0, then leave it as 0.
+what if you have a minus already? if the last element of the string is 
+not a number, then do not add the element(pass)
+
+--------------------------------
+Options:
+- message
+- prevent error from happening
+- fill in so that the formula make sense
