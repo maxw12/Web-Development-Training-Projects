@@ -1,0 +1,19 @@
+.navbar {
+    background-color: aqua;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.navbar a {
+    float: left;
+    color: black;
+    padding: 14px 16px;
+    font-size: medium;
+}
+
+.navbar a:hover {
+    background-color: aquamarine;
+    color: grey;
+}

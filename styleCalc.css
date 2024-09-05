@@ -22,26 +22,6 @@ body {
     padding: 14px 16px;
 }
 
-.navbar {
-    background-color: aqua;
-    overflow: hidden;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-}
-
-.navbar a {
-    float: left;
-    color: black;
-    padding: 14px 16px;
-    font-size: medium;
-}
-
-.navbar a:hover {
-    background-color: aquamarine;
-    color: grey;
-}
-
 .container {
     padding: 25px;
     background-color: rgb(110, 110, 112);

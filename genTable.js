@@ -28,3 +28,4 @@ function createTable() {
 }
 
 // createTable(3, 10);
+// if letter, through error
