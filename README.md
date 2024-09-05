@@ -9,7 +9,8 @@ While there is still space around the main card, scrollbars shouldn't be visible
 All styles should be in a separate css file.  
 When the page loads, the form should have some sort of animation or transition effect.  
 
-2. Create a new page that has a basic calculator using html, css & js  
+2. Create a new page that has a basic calculator using html, css & js
+
 Part 1:  
 The page should have 2 inputs in which you can enter numbers.  
 There should be a select input that lets you choose between addition, subtraction, multiplication and division.  
@@ -25,12 +26,14 @@ You will interact with the calculator by clicking on the buttons rather than typ
 The 'screen' at the top of the interface should update as you click on keys.  
 
 3. Link the login page to the calculator  
+
 Make changes to the login page such that when you press the submit button, you are redirected to the calculator page.  
 Add a ribbon at the top of the page that contains a p tag showing who logged in (this value should change depending on what was entered on the login page).  
 The ribbon should also have a logout button that takes you back to the login page. Again add basic styles.  
 Create a navigation menu that open when you hover over an icon/div and add a link to the calculator page (since this is the only non-login page you have at this point).  
 
-4. Table generation
+4. Table generation  
+
 Create a new page that has 2 inputs and a button.  
 When the button is pressed a table should be generated that has as many rows and columns as specified in the inputs.  
 If the input values are changed, pressing the button should destroy the old table and make a new one.  
