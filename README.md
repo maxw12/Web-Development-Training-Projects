@@ -44,4 +44,4 @@ When any cell is clicked, make an alert that tells you which cell was clicked wi
 Add the link to the table page to the navigation menu
 When navigating between pages the current user displayed in the ribbon should stay the same.
 Make sure todays date is in the nav ribbon.
-![image](https://github.com/user-attachments/assets/7f9cea93-60bc-42ef-9d9e-28e631a7b2cd)
+
