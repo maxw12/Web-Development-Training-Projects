@@ -30,13 +30,46 @@ app.get("/projects", (req, res) => {
 });
 
 app.get("/getProject", (req, res) => {
-    const keyValue = req.query.key;
-    for (var i = 0; i < projects.length; i++) {
-        if (keyValue === i[key]) {
-            res.send(projects[i]);
-        } else {
-            res.status(404).send({ error: "key not found" });
+    // Method without try...catch
+    // const keyValue = parseInt(req.query.projectCode);
+    // console.log(keyValue);
+    // console.log(typeof keyValue);
+    // let projectFound = false;
+    // for (var i = 0; i < projects.length; i++) {
+    //     console.log(projects[i]["projectCode"]);
+    //     console.log(i);
+    //     if (keyValue === projects[i]["projectCode"]) {
+    //         console.log("ran: ", projects[i]["projectCode"]);
+    //         res.send(projects[i]);
+    //         projectFound = true;
+    //         break;
+    //     }
+    // }
+    // if (!projectFound) {
+    //     console.log("not ran: ");
+    //     res.status(404).send({ error: "project not found" });
+    // }
+
+    // Method with try...catch
+    try {
+        const keyValue = parseInt(req.query.projectCode);
+
+        let projectFound = false;
+        for (var i = 0; i < projects.length; i++) {
+            if (keyValue === projects[i].projectCode) {
+                console.log(projects[i]["projectCode"]);
+                console.log("ran: ");
+                res.send(projects[i]);
+                projectFound = true;
+                break;
+            }
         }
+        if (!projectFound) {
+            throw new Error("Project not found for the given project code.");
+        }
+    } catch (error) {
+        console.error("there's an error", error);
+        res.status(400).send({ error: error.message });
     }
 });
 
