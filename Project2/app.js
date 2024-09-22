@@ -5,9 +5,12 @@ const PORT = 3000;
 
 const htmlPath = path.join(__dirname, "public");
 
+var username;
+
 app.use(express.json());
 app.use(express.static(htmlPath));
 app.use(express.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
 
 const projects = [
     {
@@ -59,18 +62,45 @@ app.get("/getProject", (req, res) => {
     }
 });
 
-app.get("/button", (req, res) => {
-    res.sendFile(path.join(htmlPath, "button.html"));
+// original:
+// app.get("/button", (req, res) => {
+//     res.sendFile(path.join(htmlPath, "button.html"));
+// });
+
+// app.post("/button", (req, res) => {
+//     const userInput = req.body.input;
+//     console.log(userInput);
+//     res.redirect(`/calculator?input=${encodeURIComponent(userInput)}`); // ejs method; global variable method: https://stackoverflow.com/questions/65165267/express-how-do-i-pass-a-value-from-a-form-and-receive-it-from-another-html-and-a
+// });
+
+// dynamic
+app.get("/submit", (req, res) => {
+    res.render("button", { input: "" });
 });
 
-app.post("/button", (req, res) => {
-    const userInput = req.body.input;
-    console.log(userInput);
-    res.redirect(`/calculator?input=${encodeURIComponent(userInput)}`); // egs method; global variable method
+app.post("/send", (req, res) => {
+    username = req.body.input;
+    if (!username) {
+        res.render("button", { input: "No username found" });
+    } else {
+        res.render("calc", { input: username });
+    }
 });
 
-app.get("/calculator", (req, res) => {
-    res.sendFile(path.join(htmlPath, "calc.html"));
+app.get("/send", (req, res) => {
+    if (!username) {
+        res.render("button", { input: "No username found" });
+    } else {
+        res.render("calc", { input: username });
+    }
+});
+
+app.get("/table", (req, res) => {
+    if (!username) {
+        res.render("button", { input: "No username found" });
+    } else {
+        res.render("table", { input: username });
+    }
 });
 
 // error handler

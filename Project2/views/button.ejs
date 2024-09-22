@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/nav.css" />
+    </head>
+    <body>
+        <div class="navbar" id="navbar" name="<%=input%>"></div>
+        <script src="/javascript/nav.js" defer></script>
+
+        <div class="container">
+            <div class="center">
+                <h1 class="title">Login</h1>
+                <p>Please enter your initials here:</p>
+                <form action="/send" method="post">
+                    <input
+                        type="text"
+                        id="input"
+                        name="input"
+                        placeholder="Enter here"
+                    />
+                    <button type="submit" id="button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

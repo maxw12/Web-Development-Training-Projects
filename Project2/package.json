@@ -4,12 +4,15 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "script": "node app.js"
+        "script": "node app.js",
+        "start": "nodemon --inspect=0.0.0.0:9229 app.js"
     },
     "author": "",
     "license": "ISC",
     "description": "",
     "dependencies": {
-        "express": "^4.19.2"
+        "ejs": "^3.1.10",
+        "express": "^4.21.0",
+        "nodemon": "^3.1.6"
     }
 }

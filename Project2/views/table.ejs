@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table</title>
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/nav.css" />
+    </head>
+    <body>
+        <div class="navbar" id="navbar" name="<%=input%>"></div>
+        <script src="/javascript/nav.js" defer></script>
+        <script src="/javascript/genTable.js" defer></script>
+
+        <div class="container">
+            <input id="row" type="number" placeholder="row number" />
+            <input id="column" type="number" placeholder="column number" />
+            <button class="generate" onclick="createTable()">Generate</button>
+            <div id="tableSection">
+                <table id="dynamicTable"></table>
+            </div>
+        </div>
+    </body>
+</html>
