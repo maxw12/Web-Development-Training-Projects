@@ -6,7 +6,7 @@ type ValueProp = {
     children?: ReactNode;
 };
 
-export const DisplayValue = (props: ValueProp) => {
+const DisplayValue = (props: ValueProp) => {
     return (
         <div className="border-2 rounded-lg shadow-lg shadow-slate-200 border-slate-300 w-64 p-2">
             <h1 className="font-bold font-sans">{props.heading}</h1>
@@ -16,3 +16,8 @@ export const DisplayValue = (props: ValueProp) => {
         </div>
     );
 };
+
+export default DisplayValue;
+
+// SKA: Match filename to component type
+// I changed the component to be the default export (and updated the syntax in the file importing this component)

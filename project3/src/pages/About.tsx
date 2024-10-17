@@ -1,4 +1,4 @@
-import { DisplayValue } from "@/components/value";
+import DisplayValue from "@/components/DisplayValue";
 
 export default function About() {
     return (
