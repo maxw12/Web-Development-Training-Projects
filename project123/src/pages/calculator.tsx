@@ -5,7 +5,9 @@ export default function Calculator() {
     const [currentValue, setCurrentValue] = useState<string>("0");
     const [total, setTotal] = useState<number>(0);
     const [displayValue, setDisplayValue] = useState<string>("0");
-    const [previousOperator, setPreviousOperator] = useState<string>("+");
+    const [previousOperator, setPreviousOperator] = useState<
+        string | undefined
+    >(undefined);
 
     // page load is equivalent to clear display after operator button is pressed
     const [lastButtonPressedIsOperator, setLastButtonPressedIsOperator] =
@@ -56,6 +58,9 @@ export default function Calculator() {
             case "=":
                 result = total;
                 break;
+            case undefined:
+                result = parseInt(currentValue);
+                break;
         }
 
         setTotal(result);
@@ -64,6 +69,7 @@ export default function Calculator() {
         setPreviousOperator(operator);
 
         if (operator === "=") {
+            setPreviousOperator(undefined);
             setCurrentValue(String(0));
         }
     };
@@ -100,11 +106,13 @@ export default function Calculator() {
                         "bg-red-950 text-white p-3 rounded-lg m-4 w-10 font-serif hover:bg-red-700"
                     }
                     onClick={() => handleOperator("+")}
-                    // style={{
-                    //     backgroundColor: true
-                    //         ? "lightgreen"
-                    //         : "rgb(50 60 90 / var(--tw-bg-opacity))",
-                    // }}
+                    style={{
+                        backgroundColor:
+                            previousOperator === "+" &&
+                            lastButtonPressedIsOperator
+                                ? "blue"
+                                : "#450a0a",
+                    }}
                 >
                     +
                 </button>
@@ -129,6 +137,13 @@ export default function Calculator() {
                 <button
                     className="bg-red-950 text-white p-3 rounded-lg m-4 w-10 font-serif  hover:bg-red-700"
                     onClick={() => handleOperator("-")}
+                    style={{
+                        backgroundColor:
+                            previousOperator === "-" &&
+                            lastButtonPressedIsOperator
+                                ? "blue"
+                                : "#450a0a",
+                    }}
                 >
                     -
                 </button>
@@ -153,6 +168,13 @@ export default function Calculator() {
                 <button
                     className="bg-red-950 text-white p-3 rounded-lg m-4 w-10 font-serif hover:bg-red-700"
                     onClick={() => handleOperator("=")}
+                    style={{
+                        backgroundColor:
+                            previousOperator === "=" &&
+                            lastButtonPressedIsOperator
+                                ? "blue"
+                                : "#450a0a",
+                    }}
                 >
                     =
                 </button>
@@ -165,17 +187,31 @@ export default function Calculator() {
                 <button
                     className="bg-red-950 text-white p-3 rounded-lg m-4 w-10 font-serif hover:bg-red-700"
                     onClick={() => handleOperator("*")}
+                    style={{
+                        backgroundColor:
+                            previousOperator === "*" &&
+                            lastButtonPressedIsOperator
+                                ? "blue"
+                                : "#450a0a",
+                    }}
                 >
                     *
                 </button>
                 <button
                     className="bg-red-950 text-white p-3 rounded-lg m-4 w-10 font-serif hover:bg-red-700"
                     onClick={() => handleOperator("/")}
+                    style={{
+                        backgroundColor:
+                            previousOperator === "/" &&
+                            lastButtonPressedIsOperator
+                                ? "blue"
+                                : "#450a0a",
+                    }}
                 >
                     /
                 </button>
                 <button
-                    className="bg-red-500 text-white p-3 rounded-lg m-4 w-10 font-serif"
+                    className="bg-red-500 text-white p-3 rounded-lg m-4 w-10 font-serif hover:bg-red-700"
                     onClick={() => handleOperator("c")}
                 >
                     C
