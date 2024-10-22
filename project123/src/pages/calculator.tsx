@@ -25,6 +25,7 @@ export default function Calculator() {
         console.log("newResult:", newResult);
     }, [newResult]);
 
+    // track calculation by storing previous operator using the current
     const handleOperator = (operator: string) => {
         let result: number = 0;
         switch (previousOperator) {
@@ -49,22 +50,12 @@ export default function Calculator() {
         setPreviousOperator(operator);
     };
 
-    // displayValue = -7
-    // lastButtonPressedIsOperator = true
-    // runningTotal = -7
-    // previousOperator = '+'
-
     return (
         <>
             <div className="flex max-w-xs mx-auto my-auto">Calculator page</div>
             <div className="flex ml-auto mr-auto max-w-lg">
                 <div className="flex w-52 ">{displayValue}</div>
                 <ul>
-                    {/* <CalculatorOperation
-                        total={0}
-                        buttonText="5"
-                        handleClick={add}
-                    /> */}
                     <button
                         className="bg-black text-white p-3 rounded-lg"
                         onClick={() => handleNumber("1")}
