@@ -8,28 +8,24 @@ export default function Calculator() {
     const [previousOperator, setPreviousOperator] = useState<
         string | undefined
     >(undefined);
-
     // page load is equivalent to clear display after operator button is pressed
     const [lastButtonPressedIsOperator, setLastButtonPressedIsOperator] =
         useState<boolean>(true);
-
-    const handleNumber = (number: string) => {
-        let newDisplayValue = "";
-        if (lastButtonPressedIsOperator == true) {
-            newDisplayValue = number;
-        } else if (lastButtonPressedIsOperator == false) {
-            newDisplayValue = displayValue + number;
-        }
-        setDisplayValue(newDisplayValue);
-        setLastButtonPressedIsOperator(false);
-        setCurrentValue(newDisplayValue);
-    };
 
     useEffect(() => {
         console.log("total:", total);
         console.log("prevOp", previousOperator);
         console.log("current value", currentValue);
     }, [total, previousOperator, currentValue]);
+
+    const handleNumber = (number: string) => {
+        let newDisplayValue = lastButtonPressedIsOperator
+            ? number
+            : displayValue + number;
+        setDisplayValue(newDisplayValue);
+        setLastButtonPressedIsOperator(false);
+        setCurrentValue(newDisplayValue);
+    };
 
     // track calculation by storing previous operator using the current
     const handleOperator = (operator: string): void => {
@@ -38,7 +34,12 @@ export default function Calculator() {
             setDisplayValue("0");
             setCurrentValue("0");
             setTotal(0);
-            setPreviousOperator("+");
+            setPreviousOperator(undefined);
+            return;
+        }
+
+        if (lastButtonPressedIsOperator) {
+            setPreviousOperator(operator);
             return;
         }
 
@@ -67,10 +68,11 @@ export default function Calculator() {
         setLastButtonPressedIsOperator(true);
         setDisplayValue(String(result));
         setPreviousOperator(operator);
+        setCurrentValue(String(result));
 
         if (operator === "=") {
             setPreviousOperator(undefined);
-            setCurrentValue(String(0));
+            setCurrentValue(String(result));
         }
     };
 
@@ -168,13 +170,6 @@ export default function Calculator() {
                 <button
                     className="bg-red-950 text-white p-3 rounded-lg m-4 w-10 font-serif hover:bg-red-700"
                     onClick={() => handleOperator("=")}
-                    style={{
-                        backgroundColor:
-                            previousOperator === "=" &&
-                            lastButtonPressedIsOperator
-                                ? "blue"
-                                : "#450a0a",
-                    }}
                 >
                     =
                 </button>
