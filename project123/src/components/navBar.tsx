@@ -21,8 +21,8 @@ export default function NavBar() {
                     pageButtonDisplayName="Calculator"
                 />
                 <LinksToComponents
-                    pageNavigation="/table"
-                    pageButtonDisplayName="Table"
+                    pageNavigation="/tictactoe"
+                    pageButtonDisplayName="TicTacToe"
                 />
             </div>
         </>
